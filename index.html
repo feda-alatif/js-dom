@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,50 +10,14 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-  
-  
-
-  
-  <header class="site-navbar js-sticky-header site-navbar-target shrink" role="banner" style="width: 1440px; position: fixed; top: 0px; z-index: inherit;">
-
-    <div class="container">
-       
-      <nav class="navbar__menu">
-            <div class="col-12">
-                <nav class="site-navigation text-center " role="navigation">
-
-                    <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                        <li><a href="#section1" class="nav-link active">section1</a></li>
-                        <li><a href="#section2" class="nav-link">section2</a></li>
-                        
-
-                        
-                        
-                        <li><a href="#section3" class="nav-link">section3</a></li>
-                        <li><a href="#section4" class="nav-link">section4</a></li>
-                    </ul>
-                </nav>
-
-            </div>
-</nav>
-
-            
-            </div>
-
-       
-   
-
-</header>
- 
   <!-- HTML Follows BEM naming conventions 
   IDs are only used for sections to connect menu achors to sections -->
   <header class="page__header">
-   <!-- <nav class="navbar__menu">-->
-
-      
-      <!-- Navigation starts as empty UL that will be populated with JS 
-      <ul id="navbar__list">
-      
+    <nav class="navbar__menu">
+      <!-- Navigation starts as empty UL that will be populated with JS -->
+      <ul id="navbar__list"></ul>
+    </nav>
+  </header>
   <main>
     <header class="main__hero">
       <h1>Landing Page </h1>
@@ -95,11 +58,13 @@
         <p>Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non.</p>
       </div>
     </section>
+
+
   </main>
   <footer class="page__footer">
     <p>&copy Udacity</p>
+   
   </footer>
-  <script src="js/app.js"></script> 
-  
+  <script src="js/app.js"></script>
 </body>
 </html>
