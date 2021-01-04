@@ -8,7 +8,6 @@
  * Dependencies: None
  * 
  * JS Version: ES2015/ES6
-
  * 
  * JS Standard: ESlint
  * 
@@ -19,7 +18,7 @@
  * 
 */
 
-let navbarList = document.querySelector("#navbar__list");
+let navbar = document.querySelector("#navbar__list");
 const sections = document.querySelectorAll("section");
 
 /**
@@ -28,63 +27,63 @@ const sections = document.querySelectorAll("section");
  * 
 */
 
-//Function to check if an element is in viewport or not
-function isInViewport(elem) {
-	var distance = elem.getBoundingClientRect();
+//Function to check if an element in viewport or not
+function viewport(e) {
+	var x = e.getBoundingClientRect();
 
 	return (
-		distance.top >= -300 &&
-		distance.left >= 0 &&
-		distance.bottom <= (1.3 * window.innerHeight || document.documentElement.clientHeight) &&
-		distance.right <= (window.innerWidth || document.documentElement.clientWidth)
+		x.top >= -300 &&
+		x.left >= 0 &&
+		x.bottom <= (1.3 * window.innerHeight || document.documentElement.clientHeight) &&
+		x.right <= (window.innerWidth || document.documentElement.clientWidth)
 	);
 };
 
 //Function to remove active classes
-function deactivateSections() {
+function sectionna() {
     sections.forEach((element)=>{
         element.classList.remove("your-active-class", "active");
     });
 }
 
-function deactivateNavLinks() {
-    let navbarAnchors = document.querySelectorAll(".nav__hyperlink");
-    navbarAnchors.forEach((element)=>{
+function nlna() {
+    let anchor = document.querySelectorAll(".nav__hyperlink");
+    anchor.forEach((element)=>{
         element.classList.remove("active-nav");
     });
 }
 
 /**
  * End Helper Functions
- * Begin Main Functions
+ * Begin Main Functions 
  * 
 */
 
-// build the nav
-window.addEventListener('load', buildNavbar())
+// building the nav
+window.addEventListener('load', buildnb())
 
-// Add class 'active' to section when near top of viewport
-function activateCurrentSection(currentSection) {
-    currentSection.classList.add("your-active-class", "active");
+// Add class 'active' to the section when near of viewport
+function sectionac(sectionc) {
+    sectionc.classList.add("your-active-class", "active");
 
-    deactivateNavLinks();
-    activateNavLinks(currentSection.getAttribute('id'));
+    nlna();
+    navLsa(sectionc.getAttribute('id'));
 }
-
-function activateNavLinks(currentSectionId) {
-    let navbarAnchors = document.querySelectorAll(".nav__hyperlink");
-    //console.log(navbarAnchors);
-        navbarAnchors.forEach((element)=>{
+//      
+function navLsa(currentSectionId) {
+    let anchor = document.querySelectorAll(".nav__hyperlink");
+  
+    anchor.forEach((element)=>{
             if(element.getAttribute('href') == `#${currentSectionId}`) {
                 element.classList.add("active-nav");
             }
         });
 }
 
-// Scroll to anchor ID using scrollTO event
+// croll to anchor id using scrollTO event
 function scrollToSectionOnClick() {
-    let navbarAnchors = document.querySelectorAll(".nav__hyperlink");
-    navbarAnchors.forEach((element) => {
+    let anchor = document.querySelectorAll(".nav__hyperlink");
+    anchor.forEach((element) => {
         element.addEventListener("click", function(event) {
             event.preventDefault();
             document.querySelector(element.getAttribute('href')).scrollIntoView({
@@ -93,22 +92,20 @@ function scrollToSectionOnClick() {
         });
     });
 }
-
 /**
  * End Main Functions
  * Begin Events
  * 
 */
-
 // Build menu
-function buildNavbar() {
+function buildnb() {
 	sections.forEach((element)=>{
-	    let listItem = document.createElement("li");
-	    listItem.classList.add("navbar__list__item");
-    	let sectionName = element.getAttribute("data-nav");
+	    let li = document.createElement("li");
+	    li.classList.add("navbar__list__item");
+    	let nn = element.getAttribute("data-nav");
     	let currentSectionId = element.getAttribute("id");
-        listItem.innerHTML = `<a href="#${currentSectionId}" class="nav__hyperlink">${sectionName}</a>`;
-        navbarList.appendChild(listItem);
+        li.innerHTML = `<a href="#${currentSectionId}" class="nav__hyperlink">${nn}</a>`;
+        navbar.appendChild(li);
     });
 }
 
@@ -120,15 +117,13 @@ window.addEventListener('scroll', function (event) {
 	event.preventDefault();
 	
     sections.forEach((element) => {
-        // console.log(element);
-        if (isInViewport(element)) {
-            deactivateSections();
-            activateCurrentSection(element);
-            // console.log('In viewport!');
+       
+        if (viewport(element)) {
+           sectionna();
+           sectionac(element);
         } else if(window.scrollY==0) {
-            deactivateSections();
-            deactivateNavLinks();
-            // console.log('No Change');
+            sectionna();
+            nlna();
         }
     }, false);
 });
